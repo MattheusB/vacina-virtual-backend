@@ -4,11 +4,13 @@ const app = express();
 
 
 const hospitalRouter = require('./api/hospital/hospital.route');
+const cartaoRouter = require('./api/cartao-vacina/cartao.router');
 const PORT = process.env.PORT || 3000;
 
 
 
 app.use('/hospital', hospitalRouter);
+app.use('/cartao', cartaoRouter);
 
 const nodeEnv = process.env.NODE_ENV || 'development'; 
 
