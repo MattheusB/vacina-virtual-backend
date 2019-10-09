@@ -24,3 +24,9 @@ Pacientes cadastram seu cartão de vacina fornecendo informações sobre o mesmo
 Qualquer pessoa que possua um ponto de vacinação.
 
 # Instalação
+
+```sh
+npm install
+
+npm run dev (execução com nodemon) ou node server.js
+```
