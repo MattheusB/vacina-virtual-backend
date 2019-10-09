@@ -32,4 +32,4 @@ var hospitalSchema = new Schema({
 
 var Hospital = mongoose.model('Hospital',hospitalSchema);
 
-module.exports = Hospital;
+module.exports = Hospital; 

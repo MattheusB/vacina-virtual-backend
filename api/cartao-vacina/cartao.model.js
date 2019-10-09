@@ -30,7 +30,10 @@ var cartaoSchema = new Schema({
         type: Array,
         required: false,
     }
-    
-
-    
+       
 })
+
+
+var Cartao = mongoose.model('Cartao',cartaoSchema);
+
+module.exports = Cartao;
