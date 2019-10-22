@@ -14,6 +14,10 @@ A princípio, o público desse site são necessariamente postos médicos e hospi
 - NodeJS
 - React
 
+# Arquitetura
+
+![Arquitetura](/architeture.jpeg)
+
 # Pontos fortes
 Possui um grande diferencial de ser uma plataforma acessível para qualquer um que tenha acesso à um navegador de internet. Sendo assim, simplifica a "burocracia" no processo de vacinação.
 
