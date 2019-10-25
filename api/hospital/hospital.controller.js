@@ -1,38 +1,65 @@
 const modelHospital = require('./hospital.model')
 
 
-
-exports.hospital_list = function(req, res) {
-    return res.status(200).send('NOT IMPLEMENTED YET: função para pegar hospitais')
+exports.hospital_list = async function(req, res) {
+    modelHospital.find({})    
+        .then(doc => {
+          res.json(doc)
+        })
+        .catch(err => {
+          res.status(500).json(err)
+        })
 };
 
-exports.delete_hospital = function(req, res) {
-    return res.status(200).send('NOT IMPLEMENTED YET')
+exports.delete_hospital = async function(req, res) {
+    modelHospital.findOneAndRemove({
+        codigo: req.params.codigo
+      })
+        .then(doc => {
+          res.json(doc)
+        })
+        .catch(err => {
+          res.status(500).json(err)
+        })
 };
 
-exports.create_hospital = function(req, res) {
-    console.log(req.body.codigo)
-
-    const hospital = new modelHospital({
-        codigo: req.body.codigo,
-        username: req.body.username,
-        cidade: req.body.cidade,
-        uf: req.body.uf
-    })
-
-    try{
-        const newHospital =  hospital.save()
-        res.status(201).json(newHospital)
-    } catch(error){
-        return res.status(500).send(error)
-    }
+exports.create_hospital = async function(req, res) {
+    var hospital = new modelHospital(req.body);
+    hospital.save()
+        .then(doc =>{
+            if(!doc || doc.length === 0) {
+                return res.status(500).send(doc)
+            }
+            res.status(200).send(doc)
+        })
+        .catch(err =>{
+            res.status(500).json(err)
+        })
 };
 
-exports.update_hospital = function(req, res) {
-    return res.status(200).send('NOT IMPLEMENTED YET')
+exports.update_hospital = async function(req, res) {
+    modelHospital.findOneAndUpdate({
+        codigo: req.params.codigo
+      }, req.body, {
+        new: true
+      })
+        .then(doc => {
+          res.json(doc)
+        })
+        .catch(err => {
+          res.status(500).json(err)
+        })
 };
 
-exports.get_hospital = function(req, res) {
-    return res.status(200).send('NOT IMPLEMENTED YET')
+exports.get_hospital = async function(req, res) {
+    modelHospital.findOne({
+        codigo: req.params.codigo
+      })    
+        .then(doc => {
+          res.json(doc)
+        })
+        .catch(err => {
+          res.status(500).json(err)
+        })
 };
 

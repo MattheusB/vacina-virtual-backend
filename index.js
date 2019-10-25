@@ -6,6 +6,7 @@ let bodyParser = require('body-parser');
 
 const hospitalRouter = require('./api/hospital/hospital.route');
 const cartaoRouter = require('./api/cartao-vacina/cartao.router');
+const vacinaRouter = require('./api/vacina/vacina.route')
 const PORT = process.env.PORT || 4000;
 
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 app.use('/hospital', hospitalRouter);
 app.use('/cartao', cartaoRouter);
+app.use('/vacina', vacinaRouter);
 
 
 mongoose.connect('mongodb://localhost/vacina-virtual', { useNewUrlParser: true});

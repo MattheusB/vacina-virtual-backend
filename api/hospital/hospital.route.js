@@ -12,6 +12,15 @@ const controller = require('./hospital.controller');
 router.get('/',controller.hospital_list);
 
 /**
+ * @api{get} /hospital/:id get specfic Hospital
+ * @apiname GetHospital
+ * @apiSuccess (Sucess 201) {Object} 200 hospital Hospital's data
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ */
+router.get('/:codigo', controller.get_hospital)
+
+
+/**
  * @api{post} /hospital Create Hospital
  * @apiname CreateHospital
  * @apiSuccess (Sucess 201) {Object} hospital Hospital's data.
@@ -25,7 +34,7 @@ router.post('/',controller.create_hospital)
  * @apiSuccess (Sucess 201) {Object} 200 response
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.delete('/',controller.delete_hospital)
+router.delete('/:codigo',controller.delete_hospital)
 
 /**
  * @api{put} /hospital/:id update Hospital
@@ -33,15 +42,6 @@ router.delete('/',controller.delete_hospital)
  * @apiSuccess (Sucess 201) {Object} 200 hospital Hospital's data
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.put('/:id', controller.update_hospital)
-
-
-/**
- * @api{get} /hospital/:id get specfic Hospital
- * @apiname GetHospital
- * @apiSuccess (Sucess 201) {Object} 200 hospital Hospital's data
- * @apiError {Object} 400 Some parameters may contain invalid values.
- */
-router.get('/:id', controller.get_hospital)
+router.put('/:codigo', controller.update_hospital)
 
 module.exports = router;
