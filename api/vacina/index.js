@@ -42,6 +42,6 @@ router.put('/:id', controller.atualiza_vacina)
  * @apiSuccess (Sucess 201) {Object} 200 vacina Dados vacina
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get('/:id', controller.get_vacina)
+router.get('/:id', controller.retorna_vacina)
 
 module.exports = router;

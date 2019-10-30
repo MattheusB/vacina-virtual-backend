@@ -1,22 +1,30 @@
 var express = require('express');
-
+let mongoose = require('mongoose');
 const app = express();
-
-
-const hospitalRouter = require('./api/hospital/hospital.route');
-const cartaoRouter = require('./api/cartao-vacina/cartao.router');
-const PORT = process.env.PORT || 3000;
+let bodyParser = require('body-parser');
+const api = require('./api')
 
 
 
-app.use('/hospital', hospitalRouter);
-app.use('/cartao', cartaoRouter);
+const PORT = process.env.PORT || 4000;
+
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
+
+app.use(api);
+
+
+mongoose.connect('mongodb://localhost/vacina-virtual', { useNewUrlParser: true});
 
 const nodeEnv = process.env.NODE_ENV || 'development'; 
 
 if (nodeEnv === 'production') {
     corsOptions = {
-      'origin': 'http://localhost:3000',
+      'origin': 'http://localhost:4000',
       'optionsSuccessStatus': 200
     };
     console.log('The system is running in production');
@@ -27,7 +35,7 @@ if (nodeEnv === 'production') {
 
 app.get('/',function(req,res){
     res.setHeader("Content-Type","application/json");
-    res.end(JSON.stringify('Welcome to ForFunMatch!'))
+    res.end(JSON.stringify('Welcome to Vacina Virtual'))
 });
 
 
