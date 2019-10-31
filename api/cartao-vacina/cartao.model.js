@@ -26,8 +26,8 @@ var cartaoSchema = new Schema({
 
     },
 
-    vacina: {
-        type: Array,
+    vacinas: {
+        type: [Vacina],
         required: false,
     }
        
