@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var hospitalSchema = new Schema({
     codigo:{
         type:String,
-        required:true
+        required: true
     },
 
     username: {
@@ -14,6 +14,12 @@ var hospitalSchema = new Schema({
         trim: true,
         unique: true
       },
+    
+    senha: {
+        type: String,
+        required: true,
+        minlength: 6,
+    },
     
     cidade: {
         type: String,
