@@ -26,10 +26,10 @@ var cartaoSchema = new Schema({
 
     },
 
-    vacinas: {
-        type: [Vacina],
+    vacinas: [{
+        type: Schema.Types.ObjectId, ref: 'Vacina',
         required: false,
-    }
+    }]
        
 })
 
