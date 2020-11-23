@@ -1,6 +1,6 @@
 const express = require('express');
 const router = new express.Router();
-const controller = require('./vacina.controller');
+const controller = require('../controllers/vacina.controller');
 
 
 /**

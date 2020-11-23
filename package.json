@@ -2,9 +2,8 @@
   "name": "vacina-virtual-backend",
   "version": "1.0.0",
   "description": "Repositório destinado ao projeto pessoal de: João Lucas, José Manoel, Lucas Fernandes e Mattheus Brito.",
-  "main": "./bin/server.js",
   "scripts": {
-    "dev": "node ./node_modules/nodemon/bin/nodemon",
+    "dev": "node node_modules/nodemon/bin/nodemon bin/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +17,6 @@
   },
   "homepage": "https://github.com/MattheusB/vacina-virtual-backend#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.15"

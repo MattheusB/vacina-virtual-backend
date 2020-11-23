@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var vacinaSchema = new Schema({
-    codigo:{
+    codigo: {
         type:String,
         required:true
     },

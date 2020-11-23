@@ -1,6 +1,6 @@
 const express = require('express');
 const router = new express.Router();
-const controller = require('./cartao.controller');
+const controller = require('../controllers/cartao.controller');
 
 
 /**

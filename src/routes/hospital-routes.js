@@ -1,6 +1,6 @@
 const express = require('express');
 const router = new express.Router();
-const controller = require('./hospital.controller');
+const controller = require('../controllers/hospital.controller');
 
 
 /**
@@ -9,7 +9,7 @@ const controller = require('./hospital.controller');
  * @apiSuccess {Object[]} hospital List of hospitals.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get('/',controller.hospital_list);
+router.get('/',controller.list_hospital);
 
 /**
  * @api{get} /hospital/:id get specfic Hospital
@@ -17,7 +17,7 @@ router.get('/',controller.hospital_list);
  * @apiSuccess (Sucess 201) {Object} 200 hospital Hospital's data
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get('/:codigo', controller.get_hospital)
+router.get('/:cnes', controller.get_hospital)
 
 
 /**
@@ -34,7 +34,7 @@ router.post('/',controller.create_hospital)
  * @apiSuccess (Sucess 201) {Object} 200 response
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.delete('/:codigo',controller.delete_hospital)
+router.delete('/:id',controller.delete_hospital)
 
 /**
  * @api{put} /hospital/:id update Hospital
@@ -42,6 +42,6 @@ router.delete('/:codigo',controller.delete_hospital)
  * @apiSuccess (Sucess 201) {Object} 200 hospital Hospital's data
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.put('/:codigo', controller.update_hospital)
+router.put('/:id', controller.update_hospital)
 
 module.exports = router;

@@ -1,5 +1,5 @@
-const modelVacina = require('./vacina.model')
-
+const mongoose = require('mongoose');
+const modelVacina = mongoose.model('Vacina');
 
 
 exports.lista_vacina = function(req, res) {

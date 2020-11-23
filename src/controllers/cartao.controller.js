@@ -1,4 +1,5 @@
-const modelCartao = require('./cartao.model')
+const mongoose = require('mongoose');
+const modelCartao = mongoose.model('Cartao');
 
 
 exports.cartao_list = function(req, res) {

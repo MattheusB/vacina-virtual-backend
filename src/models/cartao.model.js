@@ -2,12 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var cartaoSchema = new Schema({
-    sus:{
+    sus: {
         type:String,
         required:true
     },
 
-    cpf:{
+    cpf: {
         type:String,
         required:true
     },
@@ -27,7 +27,8 @@ var cartaoSchema = new Schema({
     },
 
     vacinas: [{
-        type: Schema.Types.ObjectId, ref: 'Vacina',
+        type: Schema.Types.ObjectId,
+        ref: 'Vacina',
         required: false,
     }]
        

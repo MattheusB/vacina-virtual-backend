@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var hospitalSchema = new Schema({
-    _id:{
+    _id: {
         type:String,
         required: true
     },
@@ -31,7 +31,7 @@ var hospitalSchema = new Schema({
         type: String,
         required: true,
     },
-    uf:{
+    uf: {
         type: String,
         required:true,
         minlength:2,

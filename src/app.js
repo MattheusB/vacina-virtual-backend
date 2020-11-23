@@ -1,15 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
 // App
 const app = express();
 
-// Connect database
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+// Database
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING, {
-    useNewUrlParser: true
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useCreateIndex: true
 });
 
 const db = mongoose.connection;
@@ -35,14 +40,22 @@ process.on('SIGINT', () => {
     });
 });
 
+// Load models
+const hospital = require('./models/hospital.model')
+const cartao = require('./models/cartao.model')
+const vacina = require('./models/vacina.model')
+
 // Load routes
 const indexRoutes = require('./routes/index-routes');
 app.use('/', indexRoutes);
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-  
-app.use(bodyParser.json());
+const cartaoRoutes = require('./routes/cartao-routes');
+app.use('/cartao', cartaoRoutes);
+
+const hospitalRoutes = require('./routes/hospital-routes');
+app.use('/hospital', hospitalRoutes);
+
+const vacinaRoutes = require('./routes/vacina-routes');
+app.use('/vacina', vacinaRoutes);
 
 module.exports = app;
