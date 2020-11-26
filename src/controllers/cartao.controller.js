@@ -1,65 +1,72 @@
-const mongoose = require('mongoose');
-const modelCartao = mongoose.model('Cartao');
+const repository = require('../repositories/cartao-repository');
 
 
-exports.cartao_list = function(req, res) {
-    modelCartao.find({})
-    .then(doc => {
-        res.status(200).json(doc)
-    })
-    .catch(err => {
-        res.status(500).json(err)
-    })
+exports.list_cartao = async (req, res) =>{
+    try {
+        const data = await repository.list_cartao();
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao carregar os cartões.' });
+    }
 };
 
-exports.delete_cartao = function(req, res) {
-    modelCartao.findOneAndRemove({
-        sus: req.params.sus
-    })
-    .then(doc => {
-        res.status(200).json(doc)
-    })
-    .catch(err =>{
-        res.status(500).json(err)
-    })
+exports.delete_cartao = async (req, res) =>{
+    try {
+        await repository.delete_cartao(req.params.id);
+        res.status(200).send({
+            message: 'Cartão removido com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao remover o cartão.' });
+    }
 };
 
-exports.create_cartao = function(req, res) {
-    var cartao = new modelCartao(req.body);
-    cartao.save()
-    .then(doc =>{
-        if (!doc || doc.length === 0){
-            return res.status(500).send(doc)
-        }
-        res.status(200).send(doc)
-    })
-    .catch(err =>{
-        res.status(500).json(err)
-    })
+exports.create_cartao = async (req, res) =>{
+    try {
+        await repository.create_cartao(req.body);
+
+        res.status(201).send({ message: 'Cartão cadastrado com sucesso!' });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao cadastrar o cartão.' });
+    }
 };
 
-exports.update_cartao = function(req, res) {
-    modelCartao.findOneAndUpdate({
-        sus: req.params.sus
-    }, req.body,{
-        new: true
-    })
-    .then(doc =>{
-        res.status(200).json(doc)
-    })
-    .catch(err =>{
-        res.status(500).json(err)
-    })
+exports.update_cartao = async (req, res) =>{
+    try {
+        await repository.update_cartao(req.params.id, req.body);
+        res.status(200).send({
+            message: 'Cartão atualizado com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao atualizar o cartão.' });
+    }
 };
 
-exports.get_cartao = function(req, res) {
-    modelCartao.findOne({
-        sus: req.params.sus
-    })
-    .then(doc =>{
-        res.status(200).json(doc)
-    })
-    .catch(err =>{
-        res.status(500).json(err)
-    })
+exports.get_cartao = async (req, res) =>{
+    try {
+        const data = await repository.get_cartao(req.params.sus);
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao carregar o cartão.' });
+    }
+};
+
+exports.inserir_vacina = async (req, res) =>{
+    try {
+        await repository.inserir_vacina(req.params.sus, req.params.codigo);
+        res.status(200).send({
+            message: 'Vacina inserida com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao inserir vacina no cartão.' });
+    }
+};
+
+exports.list_vacinas = async (req, res) =>{
+    try {
+        const data = await repository.list_vacinas(req.params.sus);
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao carregar as vacinas do usuário.' });
+    }
 };

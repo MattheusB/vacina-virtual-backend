@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const { get_vacina_ID } = require('./vacina-repository');
+const repository = require('./vacina-repository');
 const modelCartao = mongoose.model('Cartao');
 
 exports.list_cartao = async () => {
-    const res = await modelCartao.find({}, 'cnes nome cidade estado uf cep mention -_id');
+    const res = await modelCartao.find({}, 'sus cpf nome nascimento vacinas _id');
     return res;
 };
 
@@ -23,15 +23,18 @@ exports.get_cartao = async sus => {
 
 exports.update_cartao = async (id, data) => {
     await modelCartao.findByIdAndUpdate(id, {
-      $set: data
+        $set: data
     });
 };
 
 exports.inserir_vacina = async (sus, codigo) => {
-    const vacina_ref = get_vacina_ID(codigo).Schema.Types.ObjectID;
-    this.get_cartao(sus).vacinas.push(vacina_ref);
+    const vacina_ref = await repository.get_vacina_ID(codigo);
+    await modelCartao.findOneAndUpdate({sus: sus}, { $push: { vacinas: vacina_ref }})
 };
 
-exports.get_vacinas = async sus => {
-    return this.get_cartao(sus).vacinas;
+exports.list_vacinas = async sus => {
+    const res = await modelCartao.findOne({sus: sus}, "vacinas -_id");
+    var list = res.vacinas.map(id => repository.get_vacina_COD(id));
+    console.log(list)
+    return res;
 };

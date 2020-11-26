@@ -4,10 +4,14 @@ var Schema = mongoose.Schema;
 var cartaoSchema = new Schema({
     sus: {
         type: String,
+        minlength: 15,
+        maxlength: 15,
         required: true
     },
     cpf: {
         type: String,
+        minlength: 11,
+        maxlength: 11,
         required: true
     },
     nome: {
@@ -16,7 +20,7 @@ var cartaoSchema = new Schema({
         unique: true
     },
     nascimento: {
-        type: Date,
+        type: String,
         required: true,
     },
     vacinas: [{
