@@ -17,7 +17,6 @@ var cartaoSchema = new Schema({
     nome: {
         type: String,
         required: true,
-        unique: true
     },
     nascimento: {
         type: String,
@@ -27,7 +26,7 @@ var cartaoSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Vacina',
         required: false,
-    }]       
+    }]
 })
 
 var Cartao = mongoose.model('Cartao',cartaoSchema);

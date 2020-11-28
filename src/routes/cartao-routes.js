@@ -44,19 +44,11 @@ router.delete('/:id', controller.delete_cartao)
 router.put('/:id', controller.update_cartao)
 
 /**
- * @api {put} /cartao/:sus/:codigo Insert specfic vacina in cartao
+ * @api {patch} /cartao/:sus/:codigo Insert specfic vacina in cartao
  * @apiname InsertVacina
  * @apiSuccess (Sucess 200) {Object} 200 response.
  * @apiError {Object} 500 Some parameters may contain invalid values.
  */
 router.patch('/:sus/:codigo', controller.inserir_vacina)
-
-/**
- * @api {get} /cartao/:sus/vacinas Get all vacinas of cartao
- * @apiName GetAllVacinasCartao
- * @apiSuccess {Object[]} vacina List of vacinas.
- * @apiError {Object} 500 Some parameters may contain invalid values.
- */
-router.get('/:sus/vacinas', controller.list_vacinas);
 
 module.exports = router;
