@@ -3,37 +3,31 @@ var Schema = mongoose.Schema;
 
 var cartaoSchema = new Schema({
     sus: {
-        type:String,
-        required:true
+        type: String,
+        minlength: 15,
+        maxlength: 15,
+        required: true
     },
-
     cpf: {
-        type:String,
-        required:true
+        type: String,
+        minlength: 11,
+        maxlength: 11,
+        required: true
     },
-
-    username: {
+    nome: {
         type: String,
         required: true,
-        minlength: 6,
-        trim: true,
-        unique: true
-      },
-    
-    nascimento: {
-        type: Date,
-        required: true,
-
     },
-
+    nascimento: {
+        type: String,
+        required: true,
+    },
     vacinas: [{
         type: Schema.Types.ObjectId,
         ref: 'Vacina',
         required: false,
     }]
-       
 })
-
 
 var Cartao = mongoose.model('Cartao',cartaoSchema);
 

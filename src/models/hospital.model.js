@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var hospitalSchema = new Schema({
     _id: {
-        type:String,
+        type: String,
         required: true
     },
     /**username: {
@@ -33,17 +33,16 @@ var hospitalSchema = new Schema({
     },
     uf: {
         type: String,
-        required:true,
-        minlength:2,
-        maxlength:2
+        required: true,
+        minlength: 2,
+        maxlength: 2
     },
     cep: {
         type: String,
         required: true,
-        minlength:8,
-        maxlength:8
+        minlength: 8,
+        maxlength: 8
     }
-    
 })
 
 var Hospital = mongoose.model('Hospital',hospitalSchema);

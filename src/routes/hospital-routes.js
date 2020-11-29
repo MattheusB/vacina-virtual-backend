@@ -4,43 +4,42 @@ const controller = require('../controllers/hospital.controller');
 
 
 /**
- *  @api {get} /hospital Retrieve hospitals 
- *  @apiName RetrieveHospitals
+ * @api {get} /hospital Get all hospitals 
+ * @apiName GetAllHospitals
  * @apiSuccess {Object[]} hospital List of hospitals.
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/',controller.list_hospital);
+router.get('/', controller.list_hospital);
 
 /**
- * @api{get} /hospital/:id get specfic Hospital
+ * @api {get} /hospital/:cnes Get specfic hospital
  * @apiname GetHospital
- * @apiSuccess (Sucess 201) {Object} 200 hospital Hospital's data
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiSuccess (Sucess 200) {Object} 200 hospital Hospital's data.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
 router.get('/:cnes', controller.get_hospital)
 
-
 /**
- * @api{post} /hospital Create Hospital
+ * @api {post} /hospital Create hospital
  * @apiname CreateHospital
- * @apiSuccess (Sucess 201) {Object} hospital Hospital's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiSuccess (Sucess 201) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.post('/',controller.create_hospital)
+router.post('/', controller.create_hospital)
 
 /**
- * @api{delete} /hospital Delete Hospita
+ * @api {delete} /hospital/:id Delete hospital
  * @apiname DeleteHospital
- * @apiSuccess (Sucess 201) {Object} 200 response
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.delete('/:id',controller.delete_hospital)
+router.delete('/:id', controller.delete_hospital)
 
 /**
- * @api{put} /hospital/:id update Hospital
+ * @api {put} /hospital/:id Update hospital
  * @apiname UpdateHospital
- * @apiSuccess (Sucess 201) {Object} 200 hospital Hospital's data
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
 router.put('/:id', controller.update_hospital)
 

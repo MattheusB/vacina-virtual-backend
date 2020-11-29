@@ -4,44 +4,43 @@ const controller = require('../controllers/vacina.controller');
 
 
 /**
- *  @api {get} /vacina Retorna as vacinas 
- *  @apiName RetornaVacinas
- * @apiSuccess {Object[]} vacina Lista de Vacinas.
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @api {get} /vacina Get all vacinas 
+ * @apiName GetAllVacinas
+ * @apiSuccess {Object[]} vacina List of vacinas.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/',controller.lista_vacina);
+router.get('/', controller.list_vacina);
 
 /**
- * @api{post} /vacina Cria Vacina
- * @apiname CriaVacina
- * @apiSuccess (Sucess 201) {Object} vacina Dados vacina.
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @api {get} /vacina/:id Get specific vacina
+ * @apiname GetVacina
+ * @apiSuccess (Sucess 200) {Object} 200 vacina Data's vacina.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.post('/',controller.cria_vacina)
+router.get('/:codigo', controller.get_vacina)
 
 /**
- * @api{delete} /vacina Remove Vacina
- * @apiname RemoveVacina
- * @apiSuccess (Sucess 201) {Object} 200 response
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @api {post} /vacina Create vacina
+ * @apiname CreateVacina
+ * @apiSuccess (Sucess 201) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.delete('/',controller.remove_vacina)
+router.post('/', controller.create_vacina)
 
 /**
- * @api{put} /vacina/:id atualiza Vacina
- * @apiname AtualizaVacina
- * @apiSuccess (Sucess 201) {Object} 200 vacina Dados Vacina
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @api {delete} /vacina Remove vacina
+ * @apiname DeleteVacina
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.put('/:id', controller.atualiza_vacina)
-
+router.delete('/:id', controller.delete_vacina)
 
 /**
- * @api{get} /vacina/:id retorna Vacina especifica
- * @apiname RetornaVacina
- * @apiSuccess (Sucess 201) {Object} 200 vacina Dados vacina
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @api {put} /vacina/:id Update vacina
+ * @apiname UpdateVacina
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/:id', controller.retorna_vacina)
+router.put('/:id', controller.update_vacina)
 
 module.exports = router;

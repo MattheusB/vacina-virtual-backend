@@ -4,44 +4,51 @@ const controller = require('../controllers/cartao.controller');
 
 
 /**
- *  @api {get} /cartao Retrieve cartoes 
- *  @apiName RetrieveCartoes
+ * @api {get} /cartao Get all cartoes 
+ * @apiName GetAllCartoes
  * @apiSuccess {Object[]} cartao List of cartoes.
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/',controller.cartao_list);
+router.get('/', controller.list_cartao);
 
 /**
- * @api{post} /cartao Create Cartao
+ * @api {get} /cartao/:sus Get specfic cartao
+ * @apiname GetCartao
+ * @apiSuccess (Sucess 200) {Object} 200 cartao Cartao's data.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
+ */
+router.get('/:sus', controller.get_cartao)
+
+/**
+ * @api {post} /cartao Create cartao
  * @apiname CreateCartao
- * @apiSuccess (Sucess 201) {Object} Cartao Cartao's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiSuccess (Sucess 201) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.post('/',controller.create_cartao)
+router.post('/', controller.create_cartao)
 
 /**
- * @api{delete} /cartao Delete Cartao
+ * @api {delete} /cartao/:id Delete cartao
  * @apiname DeleteCartao
- * @apiSuccess (Sucess 201) {Object} 200 response
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.delete('/',controller.delete_cartao)
+router.delete('/:id', controller.delete_cartao)
 
 /**
- * @api{put} /cartao/:id update Cartao
+ * @api {put} /cartao/:id Update cartao
  * @apiname UpdateCartao
- * @apiSuccess (Sucess 201) {Object} 200 cartao Cartao's data
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
 router.put('/:id', controller.update_cartao)
 
-
 /**
- * @api{get} /cartao/:id get specfic Cartao
- * @apiname GetCartao
- * @apiSuccess (Sucess 201) {Object} 200 cartao Cartao's data
- * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @api {patch} /cartao/:sus/:codigo Insert specfic vacina in cartao
+ * @apiname InsertVacina
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/:id', controller.get_cartao)
+router.patch('/:sus/:codigo', controller.inserir_vacina)
 
 module.exports = router;
