@@ -12,7 +12,6 @@ exports.list_cartao = async () => {
 
 exports.create_cartao = async data => {
     const cartao = new modelCartao(data);
-    console.log(cartao);
     await cartao.save();
 };
 

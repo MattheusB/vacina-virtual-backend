@@ -1,7 +1,7 @@
 # vacina-virtual
 Repositório destinado ao projeto pessoal de: João Lucas, José Manoel, Lucas Fernandes e Mattheus Brito.
 
-# Vacina Virtual - "Algum slogan"
+# Vacina Virtual - "Seu registro de saúde na palma da mão!"
 Plataforma web destinada aos PSF's que são pontos de vacinas.
 
 # Motivação
@@ -29,8 +29,20 @@ Qualquer pessoa que possua um ponto de vacinação.
 
 # Instalação
 
+Para criar o banco de dados local usando MongoDB, rode este comando.
+
+```sh
+docker run -d --name vacina-virtual -p 27888:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo 
+```
+
+Para instalar as dependências do NodeJS
+
 ```sh
 npm install
+```
 
+Para rodar o backend
+
+```sh
 npm run dev (execução com nodemon) ou node server.js
 ```
