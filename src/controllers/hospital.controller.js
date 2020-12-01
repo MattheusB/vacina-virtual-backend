@@ -51,3 +51,13 @@ exports.get_hospital = async (req, res) =>{
     }
 };
 
+exports.delete_hospitais = async (req, res) =>{
+    try {
+        await repository.delete_hospitais();
+        res.status(200).send({
+            message: 'Hospitais removidos com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao remover os hospitais.' });
+    }
+};

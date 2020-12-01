@@ -43,4 +43,12 @@ router.delete('/:id', controller.delete_vacina)
  */
 router.put('/:id', controller.update_vacina)
 
+/**
+ * @api {delete} /vacina Remove all vacinas
+ * @apiname DeleteAllVacinas
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
+ */
+router.delete('/', controller.delete_vacinas)
+
 module.exports = router;

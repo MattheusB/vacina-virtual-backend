@@ -51,4 +51,12 @@ router.put('/:id', controller.update_cartao)
  */
 router.patch('/:sus/:codigo', controller.inserir_vacina)
 
+/**
+ * @api {delete} /cartao/:id Delete all cartoes
+ * @apiname DeleteAllCartoes
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
+ */
+router.delete('/', controller.delete_cartoes)
+
 module.exports = router;

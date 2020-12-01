@@ -70,3 +70,14 @@ exports.list_vacinas = async (req, res) =>{
         res.status(500).send({ message: 'Falha ao carregar as vacinas do usuário.' });
     }
 };
+
+exports.delete_cartoes = async (req, res) =>{
+    try {
+        await repository.delete_cartoes();
+        res.status(200).send({
+            message: 'Cartões removidos com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao remover o cartões.' });
+    }
+};

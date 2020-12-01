@@ -25,3 +25,7 @@ exports.update_hospital = async (id, data) => {
         $set: data
     });
 };
+
+exports.delete_hospitais = async () => {
+    await modelHospital.deleteMany({});
+};

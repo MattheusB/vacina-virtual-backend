@@ -42,3 +42,7 @@ exports.list_vacinas = async res => {
         res.vacinas[i] = codigo;
     }
 };
+
+exports.delete_cartoes = async () => {
+    await modelCartao.deleteMany({});
+};

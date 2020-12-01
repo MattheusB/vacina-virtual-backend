@@ -50,3 +50,14 @@ exports.get_vacina = async (req, res) =>{
         res.status(500).send({ message: 'Falha ao carregar a vacina.' });
     }
 };
+
+exports.delete_vacinas = async (req, res) =>{
+    try {
+        await repository.delete_vacinas();
+        res.status(200).send({
+            message: 'Vacinas removidas com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao remover as vacinas.' });
+    }
+};

@@ -43,4 +43,12 @@ router.delete('/:id', controller.delete_hospital)
  */
 router.put('/:id', controller.update_hospital)
 
+/**
+ * @api {delete} /hospital/:id Delete all hospitais
+ * @apiname DeleteAllHospitais
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
+ */
+router.delete('/', controller.delete_hospitais)
+
 module.exports = router;

@@ -35,3 +35,7 @@ exports.update_vacina = async (id, data) => {
         $set: data
     });
 };
+
+exports.delete_vacinas = async () => {
+    await modelVacina.deleteMany({});
+};
