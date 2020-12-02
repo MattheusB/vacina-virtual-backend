@@ -11,15 +11,17 @@ Considerando a proposta feita por Lucas de criar uma aplicação web que tenha u
 A princípio, o público desse site são necessariamente postos médicos e hospitais que são pontos de vacinas. No entanto, podendo mudar levemente o seu público depois de algum tempo no ar, então poderia se direcionar não só a hospitais e postos médicos, mas sim para o paciente também.
 
 # Ferramentas utilizadas
-- NodeJS
+- Mongoose
+- Express
 - React
+- NodeJS
 
 # Arquitetura
 
 ![Arquitetura](/architeture.jpeg)
 
 # Pontos fortes
-Possui um grande diferencial de ser uma plataforma acessível para qualquer um que tenha acesso à um navegador de internet. Sendo assim, simplifica a "burocracia" no processo de vacinação.
+Possui um grande diferencial de ser uma plataforma acessível para qualquer um que tenha acesso a um navegador de internet. Sendo assim, simplifica a "burocracia" no processo de vacinação.
 
 # Como funciona?
 Pacientes cadastram seu cartão de vacina fornecendo informações sobre o mesmo. Após isso, o ponto de vacinação pode editar o cartão de vacina virtual para adicionar as vacinas que o paciente tomou.
