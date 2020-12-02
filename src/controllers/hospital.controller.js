@@ -44,7 +44,7 @@ exports.update_hospital = async (req, res) => {
 
 exports.get_hospital = async (req, res) =>{
     try {
-        const data = await repository.get_hospital(req.params.cnes);
+        const data = await repository.get_hospital(req.params.id);
         res.status(200).send(data);
     } catch (e) {
         res.status(500).send({ message: 'Falha ao carregar o hospital.' });

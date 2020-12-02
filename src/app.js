@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+var cors = require('cors')
 
 require('dotenv').config();
 
@@ -40,10 +41,19 @@ process.on('SIGINT', () => {
     });
 });
 
+
 // Load models
 const hospital = require('./models/hospital.model')
 const cartao = require('./models/cartao.model')
 const vacina = require('./models/vacina.model')
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", 'GET,HEAD,PUT,POST,PATCH,DELETE');
+    res.header("Access-Control-Allow-Headers", "Content-type");
+    app.use(cors());
+    next();
+});
 
 // Load routes
 const indexRoutes = require('./routes/index-routes');

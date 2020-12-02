@@ -3,7 +3,7 @@ const repository = require('./vacina-repository');
 const modelCartao = mongoose.model('Cartao');
 
 exports.list_cartao = async () => {
-    const res = await modelCartao.find({}, 'sus cpf nome nascimento vacinas -_id');
+    const res = await modelCartao.find({}, 'sus cpf nome nascimento vacinas _id');
     for (let i = 0; i < res.length; i++) {
         await this.list_vacinas(res[i])
     }
@@ -19,8 +19,8 @@ exports.delete_cartao = async id => {
     await modelCartao.findByIdAndDelete(id);
 };
 
-exports.get_cartao = async sus => {
-    const res = await modelCartao.findOne({sus: sus}, 'sus cpf nome nascimento vacinas -_id');
+exports.get_cartao = async id => {
+    const res = await modelCartao.findById(id, 'sus cpf nome nascimento vacinas _id');
     await this.list_vacinas(res);
     return res;
 };
@@ -32,13 +32,13 @@ exports.update_cartao = async (id, data) => {
 };
 
 exports.inserir_vacina = async (sus, codigo) => {
-    const vacina_ref = await repository.get_vacina_ID(codigo);
+    const vacina_ref = await repository.get_vacina_Id(codigo);
     await modelCartao.findOneAndUpdate({sus: sus}, { $push: { vacinas: vacina_ref }})
 };
 
 exports.list_vacinas = async res => {
     for (let i = 0; i < res.vacinas.length; i++) {
-        const codigo = await repository.get_vacina_COD(res.vacinas[i]);
+        const codigo = await repository.get_vacina_Codigo(res.vacinas[i]);
         res.vacinas[i] = codigo;
     }
 };

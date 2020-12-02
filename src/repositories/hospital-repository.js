@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const modelHospital = mongoose.model('Hospital');
 
 exports.list_hospital = async () => {
-    const res = await modelHospital.find({}, 'cnes nome cidade estado uf cep -_id');
+    const res = await modelHospital.find({}, 'cnes nome cidade estado uf cep _id');
     return res;
 };
 
@@ -15,8 +15,8 @@ exports.delete_hospital = async id => {
     await modelHospital.findByIdAndDelete(id);
 };
 
-exports.get_hospital = async cnes => {
-    const res = await modelHospital.findOne({cnes: cnes}, 'cnes nome cidade estado uf cep -_id');
+exports.get_hospital = async id => {
+    const res = await modelHospital.findById(id, 'cnes nome cidade estado uf cep _id');
     return res;
 };
 

@@ -42,9 +42,10 @@ exports.update_vacina = async function(req, res) {
     }
 };
 
+
 exports.get_vacina = async (req, res) =>{
     try {
-        const data = await repository.get_vacina(req.params.codigo);
+        const data = await repository.get_vacina(req.params.id);
         res.status(200).send(data);
     } catch (e) {
         res.status(500).send({ message: 'Falha ao carregar a vacina.' });

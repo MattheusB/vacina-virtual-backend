@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const modelVacina = mongoose.model('Vacina');
 
 exports.list_vacina = async () => {
-    const res = await modelVacina.find({}, 'codigo nome dosagem -_id');
+    const res = await modelVacina.find({}, 'codigo nome dosagem _id');
     return res;
 };
 
@@ -15,17 +15,17 @@ exports.delete_vacina = async id => {
     await modelVacina.findByIdAndDelete(id);
 };
 
-exports.get_vacina = async codigo => {
-    const res = await modelVacina.findOne({codigo: codigo}, 'codigo nome dosagem -_id');
+exports.get_vacina = async id => {
+    const res = await modelVacina.findById(id, 'codigo nome dosagem _id');
     return res;
 };
 
-exports.get_vacina_ID = async codigo => {
-    const res = await modelVacina.findOne({codigo: codigo});
+exports.get_vacina_Id = async codigo => {
+    const res = await modelVacina.findOne({codigo: codigo}, '_id');
     return res._id;
 };
 
-exports.get_vacina_COD = async id => {
+exports.get_vacina_Codigo = async id => {
     const res = await modelVacina.findOne({_id: id}, 'codigo -_id');
     return res.codigo;
 };
