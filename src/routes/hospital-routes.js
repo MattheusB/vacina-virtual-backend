@@ -17,7 +17,7 @@ router.get('/', controller.list_hospital);
  * @apiSuccess (Sucess 200) {Object} 200 hospital Hospital's data.
  * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/:cnes', controller.get_hospital)
+router.get('/:id', controller.get_hospital)
 
 /**
  * @api {post} /hospital Create hospital
@@ -42,5 +42,13 @@ router.delete('/:id', controller.delete_hospital)
  * @apiError {Object} 500 Some parameters may contain invalid values.
  */
 router.put('/:id', controller.update_hospital)
+
+/**
+ * @api {delete} /hospital/:id Delete all hospitais
+ * @apiname DeleteAllHospitais
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
+ */
+router.delete('/', controller.delete_hospitais)
 
 module.exports = router;

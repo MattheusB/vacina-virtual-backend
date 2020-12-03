@@ -44,7 +44,7 @@ exports.update_cartao = async (req, res) =>{
 
 exports.get_cartao = async (req, res) =>{
     try {
-        const data = await repository.get_cartao(req.params.sus);
+        const data = await repository.get_cartao(req.params.id);
         res.status(200).send(data);
     } catch (e) {
         res.status(500).send({ message: 'Falha ao carregar o cartão.' });
@@ -53,7 +53,7 @@ exports.get_cartao = async (req, res) =>{
 
 exports.inserir_vacina = async (req, res) =>{
     try {
-        await repository.inserir_vacina(req.params.sus, req.params.codigo);
+        await repository.inserir_vacina(req.params.id, req.params.codigo);
         res.status(200).send({
             message: 'Vacina inserida com sucesso!'
         });
@@ -62,11 +62,22 @@ exports.inserir_vacina = async (req, res) =>{
     }
 };
 
-exports.list_vacinas = async (req, res) =>{
+exports.list_vacinas_cartao = async (req, res) =>{
     try {
-        const data = await repository.list_vacinas(req.params.sus);
+        const data = await repository.list_vacinas_cartao(req.params.id);
         res.status(200).send(data);
     } catch (e) {
         res.status(500).send({ message: 'Falha ao carregar as vacinas do usuário.' });
+    }
+};
+
+exports.delete_cartoes = async (req, res) =>{
+    try {
+        await repository.delete_cartoes();
+        res.status(200).send({
+            message: 'Cartões removidos com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao remover o cartões.' });
     }
 };

@@ -3,10 +3,10 @@ const repository = require('./vacina-repository');
 const modelCartao = mongoose.model('Cartao');
 
 exports.list_cartao = async () => {
-    const res = await modelCartao.find({}, 'sus cpf nome nascimento vacinas -_id');
-    for (let i = 0; i < res.length; i++) {
-        await this.list_vacinas(res[i])
-    }
+    const res = await modelCartao.find({}, 'sus cpf nome nascimento _id');
+    //for (let i = 0; i < res.length; i++) {
+    //    await this.id2cod_vacinas(res[i])
+    //}
     return res;
 };
 
@@ -19,11 +19,17 @@ exports.delete_cartao = async id => {
     await modelCartao.findByIdAndDelete(id);
 };
 
-exports.get_cartao = async sus => {
-    const res = await modelCartao.findOne({sus: sus}, 'sus cpf nome nascimento vacinas -_id');
-    await this.list_vacinas(res);
+exports.get_cartao = async id => {
+    const res = await modelCartao.findById(id, 'sus cpf nome nascimento _id');
+    //await this.id2cod_vacinas(res);
     return res;
 };
+
+exports.list_vacinas_cartao = async id => {
+    const res = await modelCartao.findById(id, 'nome vacinas _id');
+    await this.id2cod_vacinas(res);
+    return res;
+}
 
 exports.update_cartao = async (id, data) => {
     await modelCartao.findByIdAndUpdate(id, {
@@ -31,14 +37,18 @@ exports.update_cartao = async (id, data) => {
     });
 };
 
-exports.inserir_vacina = async (sus, codigo) => {
-    const vacina_ref = await repository.get_vacina_ID(codigo);
-    await modelCartao.findOneAndUpdate({sus: sus}, { $push: { vacinas: vacina_ref }})
+exports.inserir_vacina = async (id, codigo) => {
+    const vacina_ref = await repository.get_vacina_Id(codigo);
+    await modelCartao.findByIdAndUpdate(id, { $push: { vacinas: vacina_ref }})
 };
 
-exports.list_vacinas = async res => {
+exports.id2cod_vacinas = async res => {
     for (let i = 0; i < res.vacinas.length; i++) {
-        const codigo = await repository.get_vacina_COD(res.vacinas[i]);
+        const codigo = await repository.get_vacina_Codigo(res.vacinas[i]);
         res.vacinas[i] = codigo;
     }
+};
+
+exports.delete_cartoes = async () => {
+    await modelCartao.deleteMany({});
 };

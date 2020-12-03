@@ -17,7 +17,7 @@ router.get('/', controller.list_vacina);
  * @apiSuccess (Sucess 200) {Object} 200 vacina Data's vacina.
  * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/:codigo', controller.get_vacina)
+router.get('/:id', controller.get_vacina)
 
 /**
  * @api {post} /vacina Create vacina
@@ -42,5 +42,13 @@ router.delete('/:id', controller.delete_vacina)
  * @apiError {Object} 500 Some parameters may contain invalid values.
  */
 router.put('/:id', controller.update_vacina)
+
+/**
+ * @api {delete} /vacina Remove all vacinas
+ * @apiname DeleteAllVacinas
+ * @apiSuccess (Sucess 200) {Object} 200 response.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
+ */
+router.delete('/', controller.delete_vacinas)
 
 module.exports = router;

@@ -11,7 +11,6 @@ var vacinaSchema = new Schema({
     nome: {
         type: String,
         required: true,
-        unique: true
     },
     dosagem: {
         type: Number,

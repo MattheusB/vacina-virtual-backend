@@ -44,10 +44,20 @@ exports.update_hospital = async (req, res) => {
 
 exports.get_hospital = async (req, res) =>{
     try {
-        const data = await repository.get_hospital(req.params.cnes);
+        const data = await repository.get_hospital(req.params.id);
         res.status(200).send(data);
     } catch (e) {
         res.status(500).send({ message: 'Falha ao carregar o hospital.' });
     }
 };
 
+exports.delete_hospitais = async (req, res) =>{
+    try {
+        await repository.delete_hospitais();
+        res.status(200).send({
+            message: 'Hospitais removidos com sucesso!'
+        });
+    } catch (e) {
+        res.status(500).send({ message: 'Falha ao remover os hospitais.' });
+    }
+};
