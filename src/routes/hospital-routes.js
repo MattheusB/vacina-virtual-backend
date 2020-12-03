@@ -17,7 +17,7 @@ router.get('/', controller.list_hospital);
  * @apiSuccess (Sucess 200) {Object} 200 hospital Hospital's data.
  * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/:cnes', controller.get_hospital)
+router.get('/:id', controller.get_hospital)
 
 /**
  * @api {post} /hospital Create hospital

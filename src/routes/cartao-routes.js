@@ -17,7 +17,15 @@ router.get('/', controller.list_cartao);
  * @apiSuccess (Sucess 200) {Object} 200 cartao Cartao's data.
  * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.get('/:sus', controller.get_cartao)
+router.get('/:id', controller.get_cartao)
+
+/**
+ * @api {get} /cartao/:sus Get specfic cartao
+ * @apiname GetCartao
+ * @apiSuccess (Sucess 200) {Object} 200 cartao Cartao's data.
+ * @apiError {Object} 500 Some parameters may contain invalid values.
+ */
+router.get('/:id/vacinas', controller.list_vacinas_cartao)
 
 /**
  * @api {post} /cartao Create cartao
@@ -49,7 +57,7 @@ router.put('/:id', controller.update_cartao)
  * @apiSuccess (Sucess 200) {Object} 200 response.
  * @apiError {Object} 500 Some parameters may contain invalid values.
  */
-router.patch('/:sus/:codigo', controller.inserir_vacina)
+router.patch('/:id/:codigo', controller.inserir_vacina)
 
 /**
  * @api {delete} /cartao/:id Delete all cartoes
