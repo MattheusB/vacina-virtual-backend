@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Repositório destinado ao projeto pessoal de: João Lucas, José Manoel, Lucas Fernandes e Mattheus Brito.",
   "scripts": {
-    "dev": "node node_modules/nodemon/bin/nodemon bin/server",
+    "start": "nodemon bin/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
