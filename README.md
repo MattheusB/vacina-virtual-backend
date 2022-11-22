@@ -16,10 +16,6 @@ A princípio, o público desse site são necessariamente postos médicos e hospi
 - React
 - NodeJS
 
-# Arquitetura
-
-![Arquitetura](/architeture.jpeg)
-
 # Pontos fortes
 Possui um grande diferencial de ser uma plataforma acessível para qualquer um que tenha acesso a um navegador de internet. Sendo assim, simplifica a "burocracia" no processo de vacinação.
 
@@ -34,7 +30,15 @@ Qualquer pessoa que possua um ponto de vacinação.
 Para criar o banco de dados local usando MongoDB, rode este comando.
 
 ```sh
-docker run -d --name vacina-virtual -p 27888:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo 
+docker run -d --name db -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo 
+```
+
+Criar arquivo .env na pasta raiz
+
+```
+MONGO_INITDB_ROOT_USERNAME=admin
+MONGO_INITDB_ROOT_PASSWORD=admin
+DATABASE_CONNECTION_STRING=mongodb://admin:admin@db:27017
 ```
 
 Para instalar as dependências do NodeJS
@@ -46,5 +50,5 @@ npm install
 Para rodar o backend
 
 ```sh
-npm run dev (execução com nodemon) ou node server.js
+npm start (execução com nodemon) ou node server.js
 ```
