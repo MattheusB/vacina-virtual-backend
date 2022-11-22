@@ -37,6 +37,14 @@ Para criar o banco de dados local usando MongoDB, rode este comando.
 docker run -d --name vacina-virtual -p 27888:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin mongo 
 ```
 
+Criar arquivo .env na pasta raiz
+
+```
+MONGO_INITDB_ROOT_USERNAME=admin
+MONGO_INITDB_ROOT_PASSWORD=admin
+DATABASE_CONNECTION_STRING=mongodb://admin:admin@db:27017
+```
+
 Para instalar as dependências do NodeJS
 
 ```sh
